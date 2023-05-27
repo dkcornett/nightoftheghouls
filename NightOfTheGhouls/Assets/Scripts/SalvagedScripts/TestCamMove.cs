@@ -19,7 +19,7 @@ public class TestCamMove : MonoBehaviour
 
     IEnumerator rotDelay()
     {
-        yield return new WaitForSeconds(0.55f);
+        yield return new WaitForSeconds(0.65f);
         rotCD = false;
     }
 
