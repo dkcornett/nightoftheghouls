@@ -9,9 +9,9 @@ public class Health : MonoBehaviour
     public float health;
     ZombieDirectorScript director;
 
-    public GameObject corpseObj;
+    //public GameObject corpseObj;
 
-    public GameObject bloodFX;
+    //public GameObject bloodFX;
 
     bool zombie = false;
     bool human = false;
@@ -39,7 +39,7 @@ public class Health : MonoBehaviour
         health -= chunk;
 
         Quaternion rot = Quaternion.LookRotation(transform.position - hurty.transform.position, Vector3.up);
-        Instantiate(bloodFX, transform.position, rot);
+        //Instantiate(bloodFX, transform.position, rot);
 
         if (health <= 0)
         {
@@ -58,7 +58,7 @@ public class Health : MonoBehaviour
                 Quaternion sRot = Quaternion.identity;
                 //sRot.y = Random.Range(0, 360f);
                 //Debug.Log(sRot);
-                Instantiate(corpseObj, sPos, sRot);
+                //Instantiate(corpseObj, sPos, sRot);
 
                 /*
                 foreach (GameObject go in GameObject.FindGameObjectsWithTag("UIObj"))

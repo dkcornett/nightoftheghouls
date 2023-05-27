@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class BiterType : MonoBehaviour
 {
-    public float biteRange = 1;
+    public float biteRange = 2;
     public float biteDmg = 1;
     public float biteCoolD = 3f;
     bool active = false;

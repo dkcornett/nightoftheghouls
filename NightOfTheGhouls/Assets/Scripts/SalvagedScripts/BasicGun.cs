@@ -170,6 +170,7 @@ public class BasicGun : MonoBehaviour
 
     public void fireActual()
     {
+        
         if (target != null)
         {
             Health targHP = target.GetComponent<Health>();
