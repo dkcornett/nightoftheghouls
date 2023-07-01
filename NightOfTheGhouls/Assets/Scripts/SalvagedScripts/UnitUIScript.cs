@@ -31,6 +31,10 @@ public class UnitUIScript : MonoBehaviour
         if (unitClamp.CompareTag("Zombie"))
         {
             if (hBar) { hBar.maxValue = maxHP; }
+            {
+                if (unitClamp.GetComponent<BiterType>().showHealth == true) { hBar.gameObject.SetActive(true); }
+                if (unitClamp.GetComponent<BiterType>().showHealth == false) { hBar.gameObject.SetActive(false); }
+            }
             if (aBar) { aBar.gameObject.SetActive(false); }
         }
         if (unitClamp.CompareTag("PlayerUnit"))

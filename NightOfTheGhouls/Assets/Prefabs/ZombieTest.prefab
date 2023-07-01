@@ -407,6 +407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   podGroup: 1
   activateType: 0
+  detRange: 50
 --- !u!114 &4217353514564312623
 MonoBehaviour:
   m_ObjectHideFlags: 0

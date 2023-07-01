@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class BiterType : MonoBehaviour
 {
@@ -10,16 +11,20 @@ public class BiterType : MonoBehaviour
     public float biteCoolD = 3f;
     bool active = false;
     bool biteCD = false;
+
+    public UnitUIScript uiScript;
+    public bool showHealth = false;
     NavMeshAgent agent;
 
     GameObject currentTarg;
 
     Health targetH;
-
+    
     
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        uiScript = gameObject.GetComponent<UnitUIScript>();
     }
 
     // Update is called once per frame, checks to see if the zombie is active, if active targets player unit, if the player unit is near, attack them

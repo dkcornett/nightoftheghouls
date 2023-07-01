@@ -71,6 +71,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieLurker
       objectReference: {fileID: 0}
+    - target: {fileID: 4217353514564312620, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
+      propertyPath: detRange
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217353514564312620, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
+      propertyPath: podGroup
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217353514564312620, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
+      propertyPath: activateType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217353514564312622, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
+      propertyPath: maxHealth
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217353514564312623, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
+      propertyPath: showHealth
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
 --- !u!1 &8653220569403188453 stripped

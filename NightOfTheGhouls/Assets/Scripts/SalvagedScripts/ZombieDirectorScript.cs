@@ -81,12 +81,14 @@ public class ZombieDirectorScript : MonoBehaviour
                     {
                         foreach (GameObject quad in zombies)
                         {
-                            ZombieActorScript tempis = quad.GetComponent<ZombieActorScript>();
 
-                            if (tempis.podGroup -1 == tempos)
-                            {
-                                tempis.Activate();
-                            }    
+                            ZombieActorScript tempis = quad.GetComponent<ZombieActorScript>();
+                            if ((Vector3.Distance(check.transform.position, pos) <= tempis.detRange))
+                             { if (tempis.podGroup - 1 == tempos)
+                              {
+                                 tempis.Activate();
+                              }
+                             }
                         
                         }
                     }
