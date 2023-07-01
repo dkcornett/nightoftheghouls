@@ -5,6 +5,8 @@ using UnityEngine;
 public class TestCamMove : MonoBehaviour
 {
     public Camera cam;
+    public Camera pixCam;
+    public Camera depthCam;
     public float sizeAct;
 
     public float speed;
@@ -72,11 +74,15 @@ public class TestCamMove : MonoBehaviour
             
             cam.orthographicSize -= zoomSpeed * Time.deltaTime;
             sizeAct = cam.orthographicSize;
+            pixCam.orthographicSize = sizeAct;
+            depthCam.orthographicSize = sizeAct;
         }
         else if (Input.mouseScrollDelta.y < 0 && sizeAct < zoomMax)
         {
             cam.orthographicSize += zoomSpeed * Time.deltaTime;
             sizeAct = cam.orthographicSize;
+            pixCam.orthographicSize = sizeAct;
+            depthCam.orthographicSize = sizeAct;
         }
     }
 }
