@@ -12,17 +12,23 @@ public class Gun : MonoBehaviour
     [Header("Dependencies")]
     [SerializeField] private GunState mGunState;
     public GunData mGunData;
+    public GameObject mGunFlash;
+    public BasicMouseMovement mMovement;
 
-    private void Start()
+    private void Awake()
     {
         mCurrentMag = mGunData.mMagSize;
+        mCurrentAmmo = mGunData.mMaxAmmo;
+        mCurrentCooldown = mGunData.mFireRate;
+        mGunState = GunState.READY_TO_FIRE;
+
+        InvokeRepeating("Shoot", 0.0f, mCurrentCooldown);
     }
 
     public enum GunState
     {
         READY_TO_FIRE,
         FIRING,
-        SHOT_COOLDOWN,
         RELOAD,
         EMPTY_MAG,
         NO_AMMO,
@@ -44,7 +50,7 @@ public class Gun : MonoBehaviour
 
     private void FindTargets()
     {
-        float targetDist = -1;
+        float targetDist = float.PositiveInfinity;
         Collider target = null;
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, mGunData.mRange);
@@ -65,32 +71,53 @@ public class Gun : MonoBehaviour
 
     private void FireGun(Collider target)
     {
-        if (target == null) { return; }
+        if (target == null) 
+        {
+            mGunState = GunState.READY_TO_FIRE;
+            return; 
+        }
 
         transform.LookAt(target.transform);
 
-        Health targetHealth = target.GetComponent<Health>();
-        targetHealth.dealDamage(mGunData.mDamage, gameObject);
+        // [ALEX 6/10/23] TO-DO: Replace with a more efficiant vfx system once we have that in
+        Quaternion rot = Quaternion.LookRotation(target.transform.position - transform.position, Vector3.up);
+        Instantiate(mGunFlash, transform.position, rot);
 
-        mGunState = GunState.SHOT_COOLDOWN;
-        Debug.Log("FIRE");
+        if ((mGunData.mAccuracy == 100) || (Random.Range(0, 100) < mGunData.mAccuracy))
+        {
+            Health targetHealth = target.GetComponent<Health>();
+            float newDamage = mGunData.mDamage;
+            if ((mGunData.mCritChance == 100) || (Random.Range(0, 100) < mGunData.mCritChance)) { newDamage *= mGunData.mCritModifier; }
+            targetHealth.dealDamage(newDamage, gameObject);
+        }
 
         mCurrentMag--;
-        if (mCurrentMag < 1) { Reload(); }
+        if (mCurrentMag < 1) 
+        { 
+            StartCoroutine(Reload());
+            return;
+        }
     }
 
-    private void Reload()
+    private IEnumerator Reload()
     {
+        if ((mCurrentAmmo - mGunData.mMagSize) < 0)
+        {
+            mGunState = GunState.NO_AMMO;
+        }
+        else
+        {
+            mGunState = GunState.RELOAD;
+            yield return new WaitForSeconds(mGunData.mReloadTime);
 
-    }
-
-    private void ReloadFinished()
-    {
-        mGunState = GunState.READY_TO_FIRE;
+            mGunState = GunState.READY_TO_FIRE;
+            mCurrentMag = mGunData.mMagSize;
+            mCurrentAmmo -= mGunData.mMagSize;
+        }
     }
 
     private bool CanFire()
     {
-        return (mGunState == GunState.READY_TO_FIRE);
+        return (mGunState == GunState.READY_TO_FIRE) && (!mMovement.mIsMoving);
     }
 }
