@@ -15,7 +15,7 @@ TagManager:
   - Water
   - UI
   - PixelLayer
-  - 
+  - SpriteLayer
   - 
   - 
   - 
@@ -43,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Sprites
+    uniqueID: 348276353
     locked: 0
