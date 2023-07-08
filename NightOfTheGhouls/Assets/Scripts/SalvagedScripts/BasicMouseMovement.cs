@@ -7,6 +7,7 @@ public class BasicMouseMovement : MonoBehaviour
 {
     //public GameObject selCirc;
     public bool selected = false;
+    public bool mIsMoving = false;
     NavMeshAgent agent;
 
     Vector3 move;
@@ -29,7 +30,7 @@ public class BasicMouseMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        mIsMoving = agent.velocity != Vector3.zero;
 
         if (selected && Input.GetMouseButtonDown(1))
         {
