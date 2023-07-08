@@ -1144,7 +1144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 439469683}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.79, y: 1, z: -10.47}
+  m_LocalPosition: {x: 33.6, y: 1, z: 2.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3773,13 +3773,13 @@ GameObject:
   - component: {fileID: 1241575077}
   - component: {fileID: 1241575076}
   - component: {fileID: 1241575075}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1241575074
 Transform:
   m_ObjectHideFlags: 0
@@ -4465,7 +4465,7 @@ GameObject:
   - component: {fileID: 1746870920}
   - component: {fileID: 1746870921}
   - component: {fileID: 1746870922}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NOTGTestFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4961,7 +4961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1994703061
 Transform:
   m_ObjectHideFlags: 0
