@@ -58,9 +58,9 @@ public class ZombieDirectorScript : MonoBehaviour
             podPos.Add(avgPos);
         }
 
-        //directZom = DirectorHandler(1f);
+        directZom = DirectorHandler(1f);
 
-        //StartCoroutine(directZom);
+        StartCoroutine(directZom);
     }
 
     //checks player units to activate pods
@@ -75,8 +75,6 @@ public class ZombieDirectorScript : MonoBehaviour
 
                 foreach (Vector3 pos in podPos)
                 {
-                    
-
                     if (Vector3.Distance(check.transform.position, pos) <= detRange)
                     {
                         foreach (GameObject quad in zombies)
@@ -86,6 +84,7 @@ public class ZombieDirectorScript : MonoBehaviour
                             if ((Vector3.Distance(check.transform.position, pos) <= tempis.detRange))
                              { if (tempis.podGroup - 1 == tempos)
                               {
+                                   // Debug.Log("boi detected by " + tempis.name);
                                  tempis.Activate();
                               }
                              }

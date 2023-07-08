@@ -423,6 +423,8 @@ MonoBehaviour:
   biteRange: 3
   biteDmg: 1
   biteCoolD: 3
+  uiScript: {fileID: 0}
+  showHealth: 0
 --- !u!114 &4217353514564312622
 MonoBehaviour:
   m_ObjectHideFlags: 0

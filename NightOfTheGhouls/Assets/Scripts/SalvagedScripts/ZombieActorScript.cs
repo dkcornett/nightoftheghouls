@@ -18,12 +18,12 @@ public class ZombieActorScript : MonoBehaviour
     //activates the zombie's unique ai type, holds zombie podgroup for ai controller
     public void Activate()
     {
+        Debug.Log("activating zombie " + gameObject.name);
         GameObject[] targetOptions;
         targetOptions = GameObject.FindGameObjectsWithTag("PlayerUnit");
         int dice = Random.Range(0, targetOptions.Length);
         curTarg = targetOptions[dice];
         gameObject.SendMessage("ZombTypeActivate", curTarg);
-     
 
     }
 }

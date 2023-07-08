@@ -73,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4217353514564312620, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
       propertyPath: detRange
-      value: 300
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4217353514564312620, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
       propertyPath: podGroup
