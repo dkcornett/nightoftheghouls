@@ -83,9 +83,8 @@ public class ZombieDirectorScript : MonoBehaviour
                             ZombieActorScript tempis = quad.GetComponent<ZombieActorScript>();
                             if ((Vector3.Distance(check.transform.position, pos) <= tempis.detRange))
                              { if (tempis.podGroup - 1 == tempos)
-                              {
-                                   // Debug.Log("boi detected by " + tempis.name);
-                                 tempis.Activate();
+                              {// Debug.Log("boi detected by " + tempis.name);
+                               if(tempis.isActive == false) { tempis.Activate(); }
                               }
                              }
                         

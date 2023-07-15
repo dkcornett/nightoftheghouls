@@ -11,13 +11,14 @@ public class ZombieActorScript : MonoBehaviour
     //public int zombType = 1;
     public float detRange = 1;    //determines detection radius for this zombie;
                                   //default value should be different for different zombie types
-   
+    public bool isActive = false;
 
     GameObject curTarg;
 
     //activates the zombie's unique ai type, holds zombie podgroup for ai controller
     public void Activate()
     {
+        isActive = true;
         Debug.Log("activating zombie " + gameObject.name);
         GameObject[] targetOptions;
         targetOptions = GameObject.FindGameObjectsWithTag("PlayerUnit");
