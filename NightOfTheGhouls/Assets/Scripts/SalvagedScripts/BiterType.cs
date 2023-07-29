@@ -15,8 +15,11 @@ public class BiterType : MonoBehaviour
     public UnitUIScript uiScript;
     public bool showHealth = false;
     NavMeshAgent agent;
-
+    public Color debugColor = new Color(1.0f, 0.0f, 0.0f); //color for debug.draw line
+    Vector3 upVector = new Vector3(0f, 0.5f, 0f); //vector for lifting debug.draw line off the ground
     GameObject currentTarg;
+    public bool hasWander = false; // determines whether zombie has a wander range
+    public GameObject wanderRange;
 
     Health targetH;
     
@@ -25,6 +28,18 @@ public class BiterType : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         uiScript = gameObject.GetComponent<UnitUIScript>();
+
+       // if (gameObject.GetComponentInChildren < "wanderRangeObject" >  != null)
+        if(wanderRange != null)
+        {
+            Debug.Log(gameObject.name + " has a wander range!");
+            hasWander = true;
+        }
+        else
+        {
+           // Debug.Log(gameObject.name + " has NO wander range!");
+
+        }
     }
 
     // Update is called once per frame, checks to see if the zombie is active, if active targets player unit, if the player unit is near, attack them
@@ -34,14 +49,27 @@ public class BiterType : MonoBehaviour
         {
             agent.SetDestination(currentTarg.transform.position);
 
-            if (Vector3.Distance(transform.position, currentTarg.transform.position) <= biteRange && !biteCD)
+
+            Debug.DrawLine(transform.position + upVector, agent.destination + upVector, debugColor);
+
+            if (Vector3.Distance(transform.position, currentTarg.transform.position) <= biteRange && !biteCD && currentTarg.tag == "Player")
             {
-
-
                 biteCD = true;
                 targetH.dealDamage(biteDmg, gameObject);
                 StartCoroutine(biteDelay());
             }
+            if (Vector3.Distance(transform.position, currentTarg.transform.position) <= biteRange && currentTarg.tag == "WanderTarget")
+            {
+                Debug.Log("destination reached~!");
+            }
+
+        }
+        else if (!active && currentTarg == null && hasWander)
+        {
+            setWanderTarget();
+            currentTarg = wanderRange;
+
+            active = true;
         }
     }
 
@@ -61,5 +89,17 @@ public class BiterType : MonoBehaviour
 
         active = true;
     
+    }
+
+    public void setWanderTarget()
+    {
+        Collider wanderCol = wanderRange.GetComponent<Collider>();
+        Vector3 wanderTarget = new Vector3(
+            Random.Range(wanderCol.bounds.min.x, wanderCol.bounds.max.x),
+            0f,
+            Random.Range(wanderCol.bounds.min.y, wanderCol.bounds.max.y)
+            );
+        wanderRange.transform.position = wanderTarget;
+
     }
 }

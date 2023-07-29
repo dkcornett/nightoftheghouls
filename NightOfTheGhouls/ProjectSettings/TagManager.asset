@@ -7,6 +7,7 @@ TagManager:
   - PlayerUnit
   - Zombie
   - ZombieDirector
+  - WanderTarget
   layers:
   - Default
   - TransparentFX

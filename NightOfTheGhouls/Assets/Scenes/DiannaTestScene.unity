@@ -641,15 +641,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3718945657009641783, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3718945657009641783, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3718945657009641783, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4217353514564312593, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
       propertyPath: m_RootOrder
@@ -1483,6 +1483,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1682722211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1682722212}
+  - component: {fileID: 1682722213}
+  m_Layer: 0
+  m_Name: wanderRangeObject
+  m_TagString: WanderTarget
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1682722212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682722211}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -106, y: 3, z: -26}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1682722213
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682722211}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 50, y: 1, z: 300}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!1001 &1712063596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1500,15 +1545,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3718945657009641783, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3718945657009641783, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3718945657009641783, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4217353514564312593, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
       propertyPath: m_RootOrder
@@ -1581,15 +1626,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3718945657009641783, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3718945657009641783, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3718945657009641783, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4217353514564312593, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
       propertyPath: m_RootOrder
@@ -1641,6 +1686,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4217353514564312617, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217353514564312623, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
+      propertyPath: debugColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217353514564312623, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
+      propertyPath: debugColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217353514564312623, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
+      propertyPath: debugColor.r
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1962,7 +2019,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4217353514564312593, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.6
+      value: -106
       objectReference: {fileID: 0}
     - target: {fileID: 4217353514564312593, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2017,9 +2074,17 @@ PrefabInstance:
       value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4217353514564312623, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
+      propertyPath: hasWander
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217353514564312623, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
       propertyPath: showHealth
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4217353514564312623, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
+      propertyPath: wanderRange
+      value: 
+      objectReference: {fileID: 1682722211}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deb86eb6e06fdc940b40147ebc47bfdb, type: 3}
 --- !u!1001 &7404104330590391033
