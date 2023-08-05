@@ -15,4 +15,7 @@ public class GunData : ScriptableObject
     public float mRange;
     public float mFireRate;
     public float mReloadTime;
+
+    public bool mIsInfiniteAmmo;
+    public bool mIsInfiniteMag;
 }

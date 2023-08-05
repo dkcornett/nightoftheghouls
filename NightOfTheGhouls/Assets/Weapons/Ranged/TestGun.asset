@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2616abbf11bb284b8158db0865b3153, type: 3}
+  m_Name: TestGun
+  m_EditorClassIdentifier: 
+  mName: Test Gun
+  mMaxAmmo: 1000
+  mMagSize: 7
+  mDamage: 1
+  mCritModifier: 1.5
+  mCritChance: 25
+  mAccuracy: 75
+  mRange: 30
+  mFireRate: 4
+  mReloadTime: 2
+  mIsInfiniteAmmo: 0
+  mIsInfiniteMag: 0
