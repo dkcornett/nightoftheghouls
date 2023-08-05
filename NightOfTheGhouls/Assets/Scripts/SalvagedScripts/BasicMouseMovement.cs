@@ -5,26 +5,19 @@ using UnityEngine.AI;
 
 public class BasicMouseMovement : MonoBehaviour
 {
-    //public GameObject selCirc;
-    public bool selected = false;
-    public bool mIsMoving = false;
-    NavMeshAgent agent;
+    private bool mSelected = false;
+    private bool mIsMoving = false;
+    private NavMeshAgent agent;
+    private Vector3 move;
 
-    Vector3 move;
-    //Vector3[] moveLine = new Vector3[2];
-
-    //LineRenderer rend;
+    public bool IsMoving => mIsMoving;
+    public bool IsSelected => mSelected;
 
     // Start is called before the first frame update
     void Start()
     {
-        //selCirc.SetActive(false);
         agent = GetComponent<NavMeshAgent>();
-        //rend = GetComponent<LineRenderer>();
-        //moveLine[0] = transform.position;
         move = transform.position;
-        //rend.SetPosition(0, transform.position);
-        //rend.SetPosition(1, transform.position);
     }
 
     // Update is called once per frame
@@ -32,12 +25,11 @@ public class BasicMouseMovement : MonoBehaviour
     {
         mIsMoving = agent.velocity != Vector3.zero;
 
-        if (selected && Input.GetMouseButtonDown(1))
+        if (mSelected && Input.GetMouseButtonDown(1))
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit = new RaycastHit();
-
             if (Physics.Raycast(ray, out hit))
             {
                 agent.SetDestination(hit.point);
@@ -48,28 +40,18 @@ public class BasicMouseMovement : MonoBehaviour
 
             if (!Input.GetKey(KeyCode.LeftShift))
             {
-                selected = false;
-                //selCirc.SetActive(false);
+                mSelected = false;
             }
 
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
-            selected = false;
-            //selCirc.SetActive(false);
+            mSelected = false;
         }
-
-        //if (transform.position != move)
-        //{
-        //    //moveLine[0] = transform.position;
-        //    //moveLine[1] = move;
-        //    //rend.SetPositions(moveLine);
-        //}
     }
 
     private void OnMouseDown()
     {
-        //selCirc.SetActive(true);
-        selected = true;
+        mSelected = true;
     }
 }
