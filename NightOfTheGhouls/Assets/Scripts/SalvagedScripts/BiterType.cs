@@ -19,7 +19,7 @@ public class BiterType : MonoBehaviour
     Vector3 upVector = new Vector3(0f, 0.5f, 0f); //vector for lifting debug.draw line off the ground
     GameObject currentTarg;
     public bool hasWander = false; // determines whether zombie has a wander range
-    public GameObject wanderRange;
+    public ZombieWanderScript wanderRange;
 
     Health targetH;
     
@@ -58,16 +58,13 @@ public class BiterType : MonoBehaviour
                 targetH.dealDamage(biteDmg, gameObject);
                 StartCoroutine(biteDelay());
             }
-            if (Vector3.Distance(transform.position, currentTarg.transform.position) <= biteRange && currentTarg.tag == "WanderTarget")
-            {
-                Debug.Log("destination reached~!");
-            }
+ 
 
         }
         else if (!active && currentTarg == null && hasWander)
         {
-            setWanderTarget();
-            currentTarg = wanderRange;
+            wanderRange.SetWanderTarget();
+            currentTarg = wanderRange.targetObject;
 
             active = true;
         }
@@ -85,12 +82,13 @@ public class BiterType : MonoBehaviour
     {
         currentTarg = target;
 
-        targetH = target.GetComponent<Health>();
+        if (target.GetComponent<Health>())
+        { targetH = target.GetComponent<Health>(); }
 
         active = true;
     
     }
-
+    /*
     public void setWanderTarget()
     {
         Collider wanderCol = wanderRange.GetComponent<Collider>();
@@ -102,4 +100,5 @@ public class BiterType : MonoBehaviour
         wanderRange.transform.position = wanderTarget;
 
     }
+    */
 }
