@@ -5,9 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Ability", menuName = "Ability/Dummy")]
 public class DummyAbility : AbilityData
 {
-    public override void ActivateAbility(GameObject user)
+    public override bool ActivateAbility(GameObject user)
     {
         Debug.Log("Dummy ability active");
+        return true;
     }
 
     public override void DeactivateAbility(GameObject user)

@@ -26,22 +26,31 @@ public class AbilityBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!mAbilityData.mIsPassive && Input.GetKeyDown(mActivateKey) && mMover.IsSelected && mState == AbilityState.READY_TO_USE)
+        if (mAbilityData.mAbilityType == AbilityData.AbilityType.ACTIVE
+            && Input.GetKeyDown(mActivateKey)
+            && mMover.IsSelected
+            && mState == AbilityState.READY_TO_USE)
         {
             StartCoroutine(Active());
         }
-        else if (mAbilityData.mIsPassive)
+        else if (mAbilityData.mAbilityType == AbilityData.AbilityType.PASSIVE)
         {
             mAbilityData.ActivateAbility(gameObject);
+        }
+        else if (mAbilityData.mAbilityType == AbilityData.AbilityType.INVALID_TYPE)
+        {
+            Debug.LogError("ERROR: Ability Type Unknown, please check ability");
         }
     }
 
     private IEnumerator Active()
     {
-        mState = AbilityState.ACTIVE;
-        mAbilityData.ActivateAbility(gameObject);
-        yield return new WaitForSeconds(mAbilityData.mActiveTime);
-        StartCoroutine(Cooldown());
+        if (mAbilityData.ActivateAbility(gameObject))
+        {
+            mState = AbilityState.ACTIVE;
+            yield return new WaitForSeconds(mAbilityData.mActiveTime);
+            StartCoroutine(Cooldown());
+        }
     }
 
     private IEnumerator Cooldown()

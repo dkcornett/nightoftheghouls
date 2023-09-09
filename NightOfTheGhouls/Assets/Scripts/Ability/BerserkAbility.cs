@@ -8,7 +8,7 @@ public class BerserkAbility : AbilityData
     private Gun mPlayerUnitGun = null;
     private Health mPlayerUnitHealth = null;
 
-    public override void ActivateAbility(GameObject user)
+    public override bool ActivateAbility(GameObject user)
     {
         if (mPlayerUnitGun == null)     { mPlayerUnitGun = user.GetComponent<Gun>(); }
         if (mPlayerUnitHealth == null)  { mPlayerUnitHealth = user.GetComponent<Health>(); }
@@ -24,6 +24,8 @@ public class BerserkAbility : AbilityData
         mPlayerUnitGun.SetNewGunFireRate(IncreaseByPercentage(scalar, initialGunFireRate));
         mPlayerUnitGun.SetNewMeleeFireRate(IncreaseByPercentage(scalar, initialMeleeFireRate));
         mPlayerUnitGun.SetNewReloadTime(DecreaseByPercentage(scalar, initialReloadTime));
+
+        return true;
     }
 
     private float ModifierScale(float healthMin, float healthMax, float maxModifier, float minModifier, float scalar)

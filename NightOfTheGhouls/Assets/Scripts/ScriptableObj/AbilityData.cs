@@ -9,8 +9,15 @@ public class AbilityData : ScriptableObject
     [Header("Stats")]
     public float mCooldown;
     public float mActiveTime;
-    public bool mIsPassive;
+    public AbilityType mAbilityType;
 
-    public virtual void ActivateAbility(GameObject user) { }
+    public enum AbilityType
+    {
+        ACTIVE,
+        PASSIVE,
+        INVALID_TYPE = -1
+    }
+
+    public virtual bool ActivateAbility(GameObject user) { return false; }
     public virtual void DeactivateAbility(GameObject user) { }
 }
