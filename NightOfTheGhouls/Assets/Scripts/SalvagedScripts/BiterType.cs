@@ -35,11 +35,6 @@ public class BiterType : MonoBehaviour
             Debug.Log(gameObject.name + " has a wander range!");
             hasWander = true;
         }
-        else
-        {
-           // Debug.Log(gameObject.name + " has NO wander range!");
-
-        }
     }
 
     // Update is called once per frame, checks to see if the zombie is active, if active targets player unit, if the player unit is near, attack them
@@ -57,6 +52,11 @@ public class BiterType : MonoBehaviour
                 biteCD = true;
                 targetH.dealDamage(biteDmg, gameObject);
                 StartCoroutine(biteDelay());
+            }
+
+            if (hasWander && Vector3.Distance(transform.position, currentTarg.transform.position) <= biteRange && !biteCD && currentTarg.tag == "WanderTarget")
+            {
+                wanderRange.SetWanderTarget();
             }
  
 

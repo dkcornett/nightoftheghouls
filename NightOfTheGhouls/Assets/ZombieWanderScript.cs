@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ZombieWanderScript : MonoBehaviour
@@ -35,8 +36,8 @@ public class ZombieWanderScript : MonoBehaviour
         Collider wanderCol = gameObject.GetComponent<Collider>();
         Vector3 wanderTarget = new Vector3(
             Random.Range(wanderCol.bounds.min.x, wanderCol.bounds.max.x),
-            0f,
-            Random.Range(wanderCol.bounds.min.y, wanderCol.bounds.max.y)
+            gameObject.transform.position.y,
+            Random.Range(wanderCol.bounds.min.z, wanderCol.bounds.max.z)
             );
         targetObject.transform.position = wanderTarget;
 
