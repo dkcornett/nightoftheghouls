@@ -4,26 +4,28 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    [Header("Gun Data")]
+    private float mTimePassed = 0.0f;
+
+    [Header("Weapon Data")]
     [SerializeField] private int mCurrentAmmo;
     [SerializeField] private int mCurrentMag;
-    [SerializeField] private float mCurrentCooldown;
+    [SerializeField] private float mCurrentGunFireRate;
+    [SerializeField] private float mCurrentMeleeSwingRate;
+    [SerializeField] private float mCurrentReloadTime;
+    [SerializeField] private bool mIsInfiniteMag;
+    [SerializeField] private bool mIsInfiniteAmmo;
+
+    [Header("Unit Weapons")]
+    public GunData mGunData;
+    public MeleeData mMeleeData;
+
+    private bool mGunOrMelee;
+    private bool mLockWeapon;
 
     [Header("Dependencies")]
     [SerializeField] private GunState mGunState;
-    public GunData mGunData;
     public GameObject mGunFlash;
     public BasicMouseMovement mMovement;
-
-    private void Awake()
-    {
-        mCurrentMag = mGunData.mMagSize;
-        mCurrentAmmo = mGunData.mMaxAmmo;
-        mCurrentCooldown = mGunData.mFireRate;
-        mGunState = GunState.READY_TO_FIRE;
-
-        InvokeRepeating("Shoot", 0.0f, mCurrentCooldown);
-    }
 
     public enum GunState
     {
@@ -38,6 +40,29 @@ public class Gun : MonoBehaviour
 
     public GunState CurrentGunState => mGunState;
     public GunData CurrentGunData => mGunData;
+    public MeleeData CurrentMeleeData => mMeleeData;
+    public float CurrentAmmo => mCurrentAmmo;
+
+    private void Awake()
+    {
+        mCurrentMag = mGunData.mMagSize;
+        mCurrentAmmo = mGunData.mMaxAmmo;
+        mCurrentGunFireRate = mGunData.mFireRate;
+        mCurrentMeleeSwingRate = mMeleeData.mSwingRate;
+        mCurrentReloadTime = mGunData.mReloadTime;
+        mGunState = GunState.READY_TO_FIRE;
+        mGunOrMelee = true;
+        mLockWeapon = false;
+    }
+
+    private void Update()
+    {
+        mTimePassed += Time.deltaTime;
+        if (mGunOrMelee ? (mTimePassed > mCurrentGunFireRate) : (mTimePassed > mCurrentMeleeSwingRate))
+        {
+            Shoot();
+        }
+    }
 
     public void Shoot()
     {
@@ -66,10 +91,12 @@ public class Gun : MonoBehaviour
             }
         }
 
-        FireGun(target);
+        if (!mLockWeapon)   { mGunOrMelee = (targetDist <= mMeleeData.mRange); }
+
+        Attack(target);
     }
 
-    private void FireGun(Collider target)
+    private void Attack(Collider target)
     {
         if (target == null) 
         {
@@ -83,12 +110,10 @@ public class Gun : MonoBehaviour
         Quaternion rot = Quaternion.LookRotation(target.transform.position - transform.position, Vector3.up);
         Instantiate(mGunFlash, transform.position, rot);
 
-        if ((mGunData.mAccuracy == 100) || (Random.Range(0, 100) < mGunData.mAccuracy))
+        if (CalculateAccuracy())
         {
             Health targetHealth = target.GetComponent<Health>();
-            float newDamage = mGunData.mDamage;
-            if ((mGunData.mCritChance == 100) || (Random.Range(0, 100) < mGunData.mCritChance)) { newDamage *= mGunData.mCritModifier; }
-            targetHealth.dealDamage(newDamage, gameObject);
+            targetHealth.dealDamage(CalculateDamage(), gameObject);
         }
 
         mCurrentMag--;
@@ -108,7 +133,7 @@ public class Gun : MonoBehaviour
         else
         {
             mGunState = GunState.RELOAD;
-            yield return new WaitForSeconds(mGunData.mReloadTime);
+            yield return new WaitForSeconds(mCurrentReloadTime);
 
             mGunState = GunState.READY_TO_FIRE;
             mCurrentMag = mGunData.mMagSize;
@@ -118,6 +143,42 @@ public class Gun : MonoBehaviour
 
     private bool CanFire()
     {
-        return (mGunState == GunState.READY_TO_FIRE) && (!mMovement.mIsMoving);
+        return (mGunState == GunState.READY_TO_FIRE) && (!mMovement.IsMoving);
+    }
+
+    private bool CalculateAccuracy()
+    {
+        return (mGunData.mAccuracy == 100) || (Random.Range(0, 100) < mGunData.mAccuracy);
+    }
+
+    private float CalculateDamage()
+    {
+        float newDamage = mGunOrMelee ? mGunData.mDamage : mMeleeData.mDamage;
+        float critChange = mGunOrMelee ? mGunData.mCritChance : mMeleeData.mCritChance;
+        float critMod = mGunOrMelee ? mGunData.mCritModifier : mMeleeData.mCritModifier;
+
+        if ((critChange == 100) || (Random.Range(0, 100) < critChange))     { newDamage *= critMod; }
+        return newDamage;
+    }
+
+    public void SetNewReloadTime(float newReloadTime)
+    {
+        mCurrentReloadTime = newReloadTime;
+    }
+
+    public void SetNewGunFireRate(float newGunFireRate)
+    {
+        mCurrentGunFireRate = newGunFireRate;
+    }
+
+    public void SetNewMeleeFireRate(float newMeleeSwingRate)
+    {
+        mCurrentMeleeSwingRate = newMeleeSwingRate;
+    }
+
+    public void LockWeapon(bool isRanged, bool isLocked)
+    {
+        mGunOrMelee = isRanged;
+        mLockWeapon = isLocked;
     }
 }
