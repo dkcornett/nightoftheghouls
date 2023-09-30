@@ -10,6 +10,8 @@ public class AbilityBase : MonoBehaviour
     private AbilityState mState = AbilityState.READY_TO_USE;
     private BasicMouseMovement mMover;
 
+    private bool mIsAiming = false;
+
     enum AbilityState
     {
         READY_TO_USE,
@@ -26,20 +28,29 @@ public class AbilityBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!mAbilityData.mIsPassive && Input.GetKeyDown(mActivateKey) && mMover.IsSelected && mState == AbilityState.READY_TO_USE)
+        switch (mAbilityData.mAbilityType)
         {
-            StartCoroutine(Active());
-        }
-        else if (mAbilityData.mIsPassive)
-        {
-            mAbilityData.ActivateAbility(gameObject);
+            case AbilityData.AbilityType.ACTIVE:
+                UseActiveAbility();
+                break;
+
+            case AbilityData.AbilityType.PASSIVE:
+                mAbilityData.ActivateAbility(gameObject);
+                break;
+
+            case AbilityData.AbilityType.AIMED:
+                UseAimedAbility();
+                break;
+
+            default:
+                Debug.LogError("ERROR: Ability Type Unknown, please check ability");
+                break;
         }
     }
 
     private IEnumerator Active()
     {
         mState = AbilityState.ACTIVE;
-        mAbilityData.ActivateAbility(gameObject);
         yield return new WaitForSeconds(mAbilityData.mActiveTime);
         StartCoroutine(Cooldown());
     }
@@ -50,5 +61,26 @@ public class AbilityBase : MonoBehaviour
         yield return new WaitForSeconds(mAbilityData.mCooldown);
         mAbilityData.DeactivateAbility(gameObject);
         mState = AbilityState.READY_TO_USE;
+    }
+
+    private void UseActiveAbility()
+    {
+        if (Input.GetKeyDown(mActivateKey) && mMover.IsSelected && mState == AbilityState.READY_TO_USE)
+        {
+            mAbilityData.ActivateAbility(gameObject);
+            StartCoroutine(Active());
+        }
+    }
+
+    private void UseAimedAbility()
+    {
+        if (Input.GetKeyDown(mActivateKey) && mMover.IsSelected && mState == AbilityState.READY_TO_USE && !mIsAiming)      { mIsAiming = true; }
+        else if (!mIsAiming) { return; }
+
+        if (mAbilityData.ActivateAbility(gameObject))
+        {
+            mIsAiming = false;
+            StartCoroutine(Active());
+        }
     }
 }

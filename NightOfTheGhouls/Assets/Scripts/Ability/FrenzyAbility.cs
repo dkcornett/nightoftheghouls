@@ -8,7 +8,7 @@ public class FrenzyAbility : AbilityData
     private Gun mPlayerUnitGun = null;
 
     // Dramatically increases melee attack speed (40%, stacking), but cannot use ranged weapon, 6 sec duration
-    public override void ActivateAbility(GameObject user)
+    public override bool ActivateAbility(GameObject user)
     {
         if (mPlayerUnitGun == null) { mPlayerUnitGun = user.GetComponent<Gun>(); }
 
@@ -17,6 +17,7 @@ public class FrenzyAbility : AbilityData
         mPlayerUnitGun.LockWeapon(false, true);
 
         Debug.Log("Frenzy Active");
+        return true;
     }
 
     public override void DeactivateAbility(GameObject user)
