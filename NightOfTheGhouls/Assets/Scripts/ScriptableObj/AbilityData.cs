@@ -15,6 +15,7 @@ public class AbilityData : ScriptableObject
     {
         ACTIVE,
         PASSIVE,
+        AIMED,
         INVALID_TYPE = -1
     }
 

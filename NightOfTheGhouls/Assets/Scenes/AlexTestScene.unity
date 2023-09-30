@@ -501,6 +501,8 @@ MonoBehaviour:
   biteRange: 3
   biteDmg: 1
   biteCoolD: 3
+  uiScript: {fileID: 0}
+  showHealth: 0
 --- !u!114 &180752470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +517,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   podGroup: 1
   activateType: 0
+  detRange: 1
+  isActive: 0
 --- !u!195 &180752471
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -842,6 +846,8 @@ MonoBehaviour:
   biteRange: 3
   biteDmg: 1
   biteCoolD: 3
+  uiScript: {fileID: 0}
+  showHealth: 0
 --- !u!114 &223138448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -856,6 +862,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   podGroup: 1
   activateType: 0
+  detRange: 1
+  isActive: 0
 --- !u!195 &223138449
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1009,6 +1017,8 @@ MonoBehaviour:
   biteRange: 3
   biteDmg: 1
   biteCoolD: 3
+  uiScript: {fileID: 0}
+  showHealth: 0
 --- !u!114 &256365255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1023,6 +1033,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   podGroup: 1
   activateType: 0
+  detRange: 1
+  isActive: 0
 --- !u!195 &256365256
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1277,6 +1289,8 @@ MonoBehaviour:
   biteRange: 3
   biteDmg: 1
   biteCoolD: 3
+  uiScript: {fileID: 0}
+  showHealth: 0
 --- !u!114 &360879880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1291,6 +1305,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   podGroup: 1
   activateType: 0
+  detRange: 1
+  isActive: 0
 --- !u!195 &360879881
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1444,6 +1460,8 @@ MonoBehaviour:
   biteRange: 3
   biteDmg: 1
   biteCoolD: 3
+  uiScript: {fileID: 0}
+  showHealth: 0
 --- !u!114 &412533666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1458,6 +1476,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   podGroup: 1
   activateType: 0
+  detRange: 1
+  isActive: 0
 --- !u!195 &412533667
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1611,6 +1631,8 @@ MonoBehaviour:
   biteRange: 3
   biteDmg: 1
   biteCoolD: 3
+  uiScript: {fileID: 0}
+  showHealth: 0
 --- !u!114 &437942314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1625,6 +1647,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   podGroup: 1
   activateType: 0
+  detRange: 1
+  isActive: 0
 --- !u!195 &437942315
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1887,6 +1911,8 @@ MonoBehaviour:
   biteRange: 3
   biteDmg: 1
   biteCoolD: 3
+  uiScript: {fileID: 0}
+  showHealth: 0
 --- !u!114 &604473910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1901,6 +1927,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   podGroup: 1
   activateType: 0
+  detRange: 1
+  isActive: 0
 --- !u!195 &604473911
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2437,6 +2465,8 @@ MonoBehaviour:
   biteRange: 3
   biteDmg: 1
   biteCoolD: 3
+  uiScript: {fileID: 0}
+  showHealth: 0
 --- !u!114 &1000748052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2451,6 +2481,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   podGroup: 1
   activateType: 0
+  detRange: 1
+  isActive: 0
 --- !u!195 &1000748053
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3359,6 +3391,8 @@ MonoBehaviour:
   biteRange: 3
   biteDmg: 1
   biteCoolD: 3
+  uiScript: {fileID: 0}
+  showHealth: 0
 --- !u!114 &1624177323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3373,6 +3407,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   podGroup: 1
   activateType: 0
+  detRange: 1
+  isActive: 0
 --- !u!195 &1624177324
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3526,6 +3562,8 @@ MonoBehaviour:
   biteRange: 3
   biteDmg: 1
   biteCoolD: 3
+  uiScript: {fileID: 0}
+  showHealth: 0
 --- !u!114 &1635083071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3540,6 +3578,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   podGroup: 1
   activateType: 0
+  detRange: 1
+  isActive: 0
 --- !u!195 &1635083072
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3693,6 +3733,8 @@ MonoBehaviour:
   biteRange: 3
   biteDmg: 1
   biteCoolD: 3
+  uiScript: {fileID: 0}
+  showHealth: 0
 --- !u!114 &1791118367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3707,6 +3749,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   podGroup: 1
   activateType: 0
+  detRange: 1
+  isActive: 0
 --- !u!195 &1791118368
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4340,7 +4384,7 @@ PrefabInstance:
     - target: {fileID: 8062730821338903653, guid: de81fa709a4878445be0e2dd84fb45fd, type: 3}
       propertyPath: mAbilityData
       value: 
-      objectReference: {fileID: 11400000, guid: 51b0059ceb9412a4dab294bfe83ea86c, type: 2}
+      objectReference: {fileID: 11400000, guid: b3568a09ff755354a8a10b68c0380a59, type: 2}
     - target: {fileID: 9208657536484248847, guid: de81fa709a4878445be0e2dd84fb45fd, type: 3}
       propertyPath: m_Name
       value: TestPlayerUnit
