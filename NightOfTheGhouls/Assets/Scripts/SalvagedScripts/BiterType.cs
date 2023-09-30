@@ -20,6 +20,9 @@ public class BiterType : MonoBehaviour
     GameObject currentTarg;
     public bool hasWander = false; // determines whether zombie has a wander range
     public ZombieWanderScript wanderRange;
+    public bool hasPatrol = false;
+    public ZombiePatrolScript patrolPoints;
+    
 
     Health targetH;
     
@@ -32,8 +35,13 @@ public class BiterType : MonoBehaviour
        // if (gameObject.GetComponentInChildren < "wanderRangeObject" >  != null)
         if(wanderRange != null)
         {
-            Debug.Log(gameObject.name + " has a wander range!");
+          //  Debug.Log(gameObject.name + " has a wander range!");
             hasWander = true;
+        }
+        if (patrolPoints != null)
+        {
+            Debug.Log(gameObject.name + " has a patrol pattern!");
+            hasPatrol = true;
         }
     }
 
@@ -58,7 +66,10 @@ public class BiterType : MonoBehaviour
             {
                 wanderRange.SetWanderTarget();
             }
- 
+            if (hasPatrol && Vector3.Distance(transform.position, currentTarg.transform.position) <= biteRange && !biteCD && currentTarg.tag == "WanderTarget")
+            {
+                patrolPoints.NextPatrolPoint();
+            }
 
         }
         else if (!active && currentTarg == null && hasWander)
@@ -66,6 +77,11 @@ public class BiterType : MonoBehaviour
             wanderRange.SetWanderTarget();
             currentTarg = wanderRange.targetObject;
 
+            active = true;
+        }
+        else if (!active && currentTarg == null && hasPatrol) 
+        {
+            currentTarg = patrolPoints.targetObject;
             active = true;
         }
     }
@@ -88,17 +104,4 @@ public class BiterType : MonoBehaviour
         active = true;
     
     }
-    /*
-    public void setWanderTarget()
-    {
-        Collider wanderCol = wanderRange.GetComponent<Collider>();
-        Vector3 wanderTarget = new Vector3(
-            Random.Range(wanderCol.bounds.min.x, wanderCol.bounds.max.x),
-            0f,
-            Random.Range(wanderCol.bounds.min.y, wanderCol.bounds.max.y)
-            );
-        wanderRange.transform.position = wanderTarget;
-
-    }
-    */
 }

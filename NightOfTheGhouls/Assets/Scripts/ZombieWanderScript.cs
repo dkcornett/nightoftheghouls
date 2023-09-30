@@ -43,6 +43,6 @@ public class ZombieWanderScript : MonoBehaviour
 
       //  biterType.ZombTypeActivate(targetObject);
 
-        Debug.Log("resetting wander target!");
+        //Debug.Log("resetting wander target!");
     }
 }
